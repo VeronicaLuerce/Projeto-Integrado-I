@@ -69,7 +69,7 @@ def criar_banco():
         quantidade_minima INTEGER,
         quantidade_excesso INTEGER,
         FOREIGN KEY (categoria_id) REFERENCES Categoria(id)
-        FOREIGN KEY (posicao) REFERENCES Posicao(id)
+        FOREIGN KEY (posicao_id) REFERENCES Posicao(id)
         );
 
         CREATE TABLE IF NOT EXISTS Categoria(
@@ -116,7 +116,7 @@ def criar_banco():
                     nome_posicao = f'{nome_prateleira}A0{count3}'
                 else:
                     nome_posicao = f'{nome_prateleira}A{count3}'
-                cursor.execute("INSERT INTO Posicao(nome) VALUES = ?" , nome_posicao)
+                cursor.execute("INSERT INTO Posicao(nome) VALUES = (?)" , (nome_posicao,))
                 conn.commit()
     print("Banco de dados criado!")
 
